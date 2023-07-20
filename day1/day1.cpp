@@ -26,7 +26,7 @@ void findMax(std::vector<std::vector<std::string>> const& v) {
 		sum = 0;
 	}
 
-	std::cout << max << std::endl;
+	std::cout << elf << std::endl;
 }
 
 bool stringToBool(std::string const& s) {
