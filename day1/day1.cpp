@@ -11,7 +11,6 @@
 void findMax(std::vector<std::vector<std::string>> const& v) {
 	int sum = 0;
 	int max = 0;
-	int elf = 0;
 
 	for (int x = 0; x < v.size(); x += 1) {
 		for (int y = 0; y < v.at(x).size(); y += 1) {
@@ -21,12 +20,11 @@ void findMax(std::vector<std::vector<std::string>> const& v) {
 		
 		if (sum > max) {
 			max = sum;
-			elf = x+1;
 		}
 		sum = 0;
 	}
 
-	std::cout << elf << std::endl;
+	std::cout << max << std::endl;
 }
 
 bool stringToBool(std::string const& s) {
