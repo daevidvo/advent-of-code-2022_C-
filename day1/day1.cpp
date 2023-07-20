@@ -5,17 +5,30 @@
 #include <fstream>
 #include <string>
 #include <vector>
+// for typeid to work
+#include <typeinfo>
 
-void printVector(std::vector<std::string> const& dataVector) {
-	for (int x = 0; x < dataVector.size(); x += 1) {
-		std::cout << dataVector.at(x) << "\n";
+void printVector(std::vector<std::vector<std::string>> const& v) {
+	int sum = 0;
+	int max = 0;
+
+	for (int x = 0; x < v.size(); x += 1) {
+		for (int y = 0; y < v.at(x).size(); y += 1) {
+			int num = std::stoi(v.at(x).at(y));
+			sum += num;
+		}
+		
+		if (sum > max) {
+			max = sum;
+		}
+		sum = 0;
 	}
+
+	std::cout << max << std::endl;
 }
 
 bool stringToBool(std::string const& s) {
-	bool b = 
-
-	std::istringstream(s) >> b;
+	return (bool)std::stoi(s);
 }
 
 int main() {
@@ -30,14 +43,19 @@ int main() {
 	}
 
 	std::vector<std::string> dataVector;
+	std::vector<std::vector<std::string>> v;
 
 	while (std::getline(data, dataString)) {
-		if (stringToBool(dataString)) {
+		if (dataString.length() == 0) {
+			v.push_back(dataVector);
+			dataVector.clear();
+		}
+		else {
 			dataVector.push_back(dataString);
 		}
 	}
 	
-	printVector(dataVector);
+	printVector(v);
 
 	return 0;
 }
