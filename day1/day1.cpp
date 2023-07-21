@@ -5,8 +5,6 @@
 #include <fstream>
 #include <string>
 #include <vector>
-// for typeid to work
-#include <typeinfo>
 
 void findMax(std::vector<std::vector<std::string>> const& v) {
 	int sum = 0;
