@@ -62,10 +62,6 @@ void findTopThreeMax(std::vector<std::vector<std::string>> const& v) {
 	std::cout << "The total calories of the top three elves are: " << sumMaxes << std::endl;
 }
 
-bool stringToBool(std::string const& s) {
-	return (bool)std::stoi(s);
-}
-
 int main() {
 	// reading data
 	// file is executing from .sln so that's why we do ./day1/data.txt
