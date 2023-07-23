@@ -27,7 +27,9 @@ void findMax(std::vector<std::vector<std::string>> const& v) {
 
 void findTopThreeMax(std::vector<std::vector<std::string>> const& v) {
 	// YIKES THIS IS MESSY LMAO
-	std::vector<int> maxes;
+	int max1 = 0;
+	int max2 = 0;
+	int max3 = 0;
 
 	for (int x = 0; x < v.size(); x += 1) {
 		int sum = 0;
@@ -37,30 +39,24 @@ void findTopThreeMax(std::vector<std::vector<std::string>> const& v) {
 
 			sum += num;
 		}
-		
-		maxes.push_back(sum);
-		sum = 0;
-	}
 
-	// bubble sort
-	for (int x = 0; x < maxes.size(); x += 1) {
-		for (int y = 0; y < maxes.size(); y += 1) {
-			if (maxes.at(y) > maxes.at(x)) {
-				int temp = maxes.at(x);
-				maxes.at(x) = maxes.at(y);
-				maxes.at(y) = temp;
-			}
+		if (sum > max1) {
+			max3 = max2;
+			max2 = max1;
+			max1 = sum;
+		}
+		else if (sum > max2) {
+			max3 = max2;
+			max2 = sum;
+		}
+		else if (sum > max3) {
+			max3 = sum;
 		}
 	}
 
-	int sumMaxes = 0;
+	std::cout << max1 + max2 + max3 << std::endl;
 
-	for (int x = 0; x < 3; x += 1) {
-		sumMaxes += maxes.at(maxes.size() - x - 1);
 	}
-
-	std::cout << "The total calories of the top three elves are: " << sumMaxes << std::endl;
-}
 
 int main() {
 	// reading data
