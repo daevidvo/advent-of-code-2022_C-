@@ -26,6 +26,11 @@ int main() {
 	std::string dataString;
 	std::vector<std::string> dataVector;
 
+	if (!data) {
+		std::cout << "Unable to retrieve data" << std::endl;
+		exit(1);
+	}
+
 	while (std::getline(data, dataString)) {
 		if (dataString.length() != 0) {
 			dataVector.push_back(dataString);
