@@ -7,7 +7,20 @@
 #include <vector>
 #include <unordered_map>
 
+void calcTotal(std::vector<std::string> const& dataVector, std::unordered_map<std::string, int> const& map) {
+	int total = 0;
+	int roundPoints;
+
+	for (int x = 0; x < dataVector.size(); x += 1) {
+		roundPoints = map.at(dataVector.at(x));
+		total += roundPoints;
+	}
+
+	std::cout << total << std::endl;
+}
+
 int main() {
+	// setting up problem
 	// adding the data into a vector
 	std::fstream data("./day2/data.txt");
 	std::string dataString;
@@ -18,6 +31,8 @@ int main() {
 			dataVector.push_back(dataString);
 		}
 	}
+
+	typedef std::unordered_map<std::string, int> hashMap;
 	
 	/* === PART 1 === */
 
@@ -31,27 +46,39 @@ int main() {
 	// loss = 0 points
 	// tie = 3 points
 	// win = 6 points 
-	std::unordered_map<std::string, int> hashMap;
+	hashMap hashMapPart1;
 
-	hashMap["A X"] = 4;
-	hashMap["A Y"] = 8;
-	hashMap["A Z"] = 3;
-	hashMap["B X"] = 1;
-	hashMap["B Y"] = 5;
-	hashMap["B Z"] = 9;
-	hashMap["C X"] = 7;
-	hashMap["C Y"] = 2;
-	hashMap["C Z"] = 6;
+	hashMapPart1["A X"] = 4;
+	hashMapPart1["A Y"] = 8;
+	hashMapPart1["A Z"] = 3;
+	hashMapPart1["B X"] = 1;
+	hashMapPart1["B Y"] = 5;
+	hashMapPart1["B Z"] = 9;
+	hashMapPart1["C X"] = 7;
+	hashMapPart1["C Y"] = 2;
+	hashMapPart1["C Z"] = 6;
 
-	int total = 0;
-	int roundPoints;
+	calcTotal(dataVector, hashMapPart1);
 
-	for (int x = 0; x < dataVector.size(); x += 1) {
-		roundPoints = hashMap[dataVector.at(x)];
-		total += roundPoints;
-	}
+	/* === PART 2 === */
+	
+	// same thing except:
+	// X = need to lose
+	// Y = need to tie
+	// Z = need to win
+	hashMap hashMapPart2;
 
-	std::cout << total << std::endl;
+	hashMapPart2["A X"] = 3;
+	hashMapPart2["A Y"] = 4;
+	hashMapPart2["A Z"] = 8;
+	hashMapPart2["B X"] = 1;
+	hashMapPart2["B Y"] = 5;
+	hashMapPart2["B Z"] = 9;
+	hashMapPart2["C X"] = 2;
+	hashMapPart2["C Y"] = 6;
+	hashMapPart2["C Z"] = 7;
+
+	calcTotal(dataVector, hashMapPart2);
 
 	return 0;
 }
