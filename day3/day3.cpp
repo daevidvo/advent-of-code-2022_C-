@@ -8,7 +8,7 @@
 #include <unordered_map>
 
 int main() {
-	
+
 	/*
 	TODO: Find the sum of the properties of the duplicate item types in each rucksack
 
@@ -24,7 +24,7 @@ int main() {
 	- sum+=value
 	- std::cout << sum << std::endl;
 	*/
-		
+
 	typedef std::unordered_map<std::string, int> hashmap;
 
 	// setting up property values
@@ -38,7 +38,7 @@ int main() {
 
 		letterValuesMap[letter] = x + 1;
 	}
-	
+
 	// grabbing data 
 	std::fstream data("./day3/data.txt");
 	std::string	dataString;
@@ -53,24 +53,38 @@ int main() {
 		dataVector.push_back(dataString);
 	}
 
-
+	
 	/* === PART 1 === */
+	
+	int sum = 0;
+
 	for (int x = 0; x < dataVector.size(); x += 1) {
 		std::string compartment1;
 		std::string compartment2;
-		
+
 		std::string element = dataVector.at(x);
-		
+
 		// splicing strings into their respective halves
 		compartment1 = element.substr(0, element.length() / 2);
 		compartment2 = element.substr(element.length() / 2, element.length() / 2);
-
 		
 
+		for (int x = 0; x < compartment1.length(); x += 1) {
+			std::size_t found = compartment2.find(compartment1.at(x));
+			std::string letter;
+			letter = compartment1.at(x);
+			int point;
+
+			if (found != -1) {
+				point = letterValuesMap[letter];
+				sum += point;
+				break;
+			}
+		}
 	}
 
+	std::cout << sum << std::endl;
 	
-
 
 	return 0;
 }
