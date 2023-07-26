@@ -69,13 +69,13 @@ int main() {
 		compartment2 = element.substr(element.length() / 2, element.length() / 2);
 		
 
-		for (int x = 0; x < compartment1.length(); x += 1) {
-			std::size_t found = compartment2.find(compartment1.at(x));
+		for (int y = 0; y < compartment1.length(); y += 1) {
+			std::size_t found = compartment2.find(compartment1.at(y));
 			std::string letter;
-			letter = compartment1.at(x);
+			letter = compartment1.at(y);
 			int point;
 
-			if (found != -1) {
+			if (found != std::string::npos) {
 				point = letterValuesMap[letter];
 				sum += point;
 				break;
@@ -85,6 +85,30 @@ int main() {
 
 	std::cout << sum << std::endl;
 	
+	/* === PART 2 === */
+
+	int sum2 = 0;
+
+	for (int x = 0; x < dataVector.size(); x += 3) {
+		std::string elf1;
+		std::string elf2;
+		std::string elf3;
+
+		elf1 = dataVector.at(x);
+		elf2 = dataVector.at(x + 1);
+		elf3 = dataVector.at(x + 2);
+
+		for (int y = 0; y < elf1.size(); y += 1) {
+			std::string letter;
+			letter = elf1.at(y);
+			if (elf2.find(elf1.at(y)) != std::string::npos && elf3.find(elf1.at(y) != std::string::npos)) {
+				sum2 += letterValuesMap[letter];
+				break;
+			}
+		}
+	}
+
+	std::cout << sum2 << std::endl;
 
 	return 0;
 }
