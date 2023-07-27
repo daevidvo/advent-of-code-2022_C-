@@ -101,14 +101,15 @@ int main() {
 		for (int y = 0; y < elf1.size(); y += 1) {
 			std::string letter;
 			letter = elf1.at(y);
-			if (elf2.find(elf1.at(y)) != std::string::npos && elf3.find(elf1.at(y) != std::string::npos)) {
-				sum2 += letterValuesMap[letter];
-				break;
+			if (elf2.find(elf1.at(y)) != std::string::npos) {
+				if (elf3.find(elf1.at(y)) != std::string::npos) {
+					sum2 += letterValuesMap[letter];
+					break;
+				}
 			}
 		}
 	}
 
 	std::cout << sum2 << std::endl;
-
 	return 0;
 }
