@@ -3,9 +3,17 @@
 
 #include <iostream>
 #include <fstream>
+#include <vector>
 
 int main() {
-	
+	std::fstream data("./day4/data.txt");
+	std::string dataString;
+
+	if (!data) {
+		std::cout << "Unable to load data" << std::endl;
+		exit(1);
+	}
+
 
 
 	return 0;
