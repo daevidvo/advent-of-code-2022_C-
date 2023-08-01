@@ -84,7 +84,28 @@ int main() {
 
 	std::cout << pairCounter << std::endl;
 
+	/* === PART 2 === */
 
+	pairCounter = 0;
+
+	for (int x = 0; x < dataVector.size(); x += 1) {
+		std::string num1String = spliceString(dataVector.at(x), 0);
+		std::string num2String = spliceString(dataVector.at(x), 1);
+
+		int firstPairFirstNum = stringToNum(num1String, 0);
+		int firstPairSecondNum = stringToNum(num1String, 1);
+		int secondPairFirstNum = stringToNum(num2String, 0);
+		int secondPairSecondNum = stringToNum(num2String, 1);
+		
+		if ((firstPairSecondNum >= secondPairFirstNum) && (firstPairFirstNum <= secondPairSecondNum)) {
+			pairCounter += 1;
+		}
+		else if ((firstPairFirstNum <= secondPairSecondNum) && (secondPairFirstNum <= firstPairSecondNum)) {
+			pairCounter += 1;
+		}
+	}
+
+	std::cout << pairCounter << std::endl;
 
 	return 0;
 }
