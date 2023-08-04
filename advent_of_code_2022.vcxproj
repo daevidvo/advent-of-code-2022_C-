@@ -21,6 +21,9 @@
   <ItemGroup>
     <ClCompile Include="day5\day5.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="day5\data.txt" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
