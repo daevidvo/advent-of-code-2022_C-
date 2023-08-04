@@ -4,7 +4,6 @@
 #include <string>
 #include <vector>
 
-
 int main() {
 	std::string dataString;
 	std::fstream data("./day5/data.txt");
@@ -44,6 +43,7 @@ int main() {
 
 	int indexNum = 1;
 	int counter = 0;
+
 	while (counter < 9) {
 		int rowNum = 7;
 		for (int x = 0; x < 8; x += 1) {
@@ -58,7 +58,22 @@ int main() {
 		counter += 1;
 	}
 
-	std::cout << stackVector.at(0).top() << "\n";
+	/* === PART 1 === */
+
+	for (int x = 10; x < dataVector.size(); x += 1) {
+		size_t pos = 0;
+		std::string delimiter = " ";
+
+		while ((pos = dataVector.at(x).find(delimiter) != std::string::npos)) {
+			dataVector.at(x) = dataVector.at(x).substr(pos, dataVector.at(x).size());
+		}
+
+		std::cout << dataVector.at(x) << "\n";
+	}
+
+
+
+
 
 	return 0;
 }
